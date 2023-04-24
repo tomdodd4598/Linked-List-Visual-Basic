@@ -8,12 +8,12 @@ Module Main
 		Return ValidRegex.IsMatch(str)
 	End Function
 
-	Function InsertBefore(val As String, oth As Item(Of String)) As Boolean
+	Function InsertBefore(val As String, item As Item(Of String)) As Boolean
 		Dim x = Nothing, y = Nothing
-		If BigInteger.TryParse(val, x) AndAlso BigInteger.TryParse(oth.value, y) Then
+		If BigInteger.TryParse(val, x) AndAlso BigInteger.TryParse(item.value, y) Then
 			Return x <= y
 		Else
-			Return val <= oth.value
+			Return val <= item.value
 		End If
 	End Function
 
@@ -23,8 +23,8 @@ Module Main
 
 	Sub Main()
 		Dim start As Item(Of String) = Nothing
+
 		Dim begin = True
-		Dim input As String
 
 		While True
 			If Not begin Then
@@ -34,7 +34,7 @@ Module Main
 			End If
 
 			Console.WriteLine("Awaiting input...")
-			input = Console.ReadLine()
+			Dim input = Console.ReadLine()
 
 			If input.Length = 0 Then
 				Console.WriteLine(vbLf & "Program terminated!")

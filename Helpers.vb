@@ -1,6 +1,5 @@
 ﻿Module Helpers
 	Public Sub InsertItem(Of T)(ByRef start As Item(Of T), val As T, insertBefore As Func(Of T, Item(Of T), Boolean))
-		Console.WriteLine($"Creating item: {val}")
 		Dim current = start, previous As Item(Of T) = Nothing
 
 		While current IsNot Nothing AndAlso Not insertBefore(val, current)

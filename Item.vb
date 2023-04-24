@@ -3,12 +3,9 @@
 	Public next_ As Item(Of T)
 
 	Public Sub New(value As T, next_ As Item(Of T))
+		Console.WriteLine($"Creating item: {value}")
 		MyClass.value = value
 		MyClass.next_ = next_
-	End Sub
-
-	Protected Overrides Sub Finalize()
-		Console.WriteLine($"Garbage collecting item: {value}")
 	End Sub
 
 	Default Public ReadOnly Property Item(n As Integer) As Item(Of T)
@@ -22,8 +19,7 @@
 	End Property
 
 	Public Function PrintGetNext() As Item(Of T)
-		Console.Write(value)
-		Console.Write(If(next_ Is Nothing, vbLf, ", "))
+		Console.Write(String.Format("{0}{1}", value, If(next_ Is Nothing, vbLf, ", ")))
 		Return next_
 	End Function
 
